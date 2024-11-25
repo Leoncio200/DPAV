@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DPAV.Views.Perros.ModificarPerro"
+             Title="ModificarPerro">
+    <VerticalStackLayout>
+        <ScrollView HorizontalOptions="CenterAndExpand" Orientation="Vertical" VerticalScrollBarVisibility="Always">
+            <VerticalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand">
+                <HorizontalStackLayout>
+                    <Label Text="Nombre:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Raza:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Picker WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Edad:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Color:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Altura:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Tamaño:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Peso:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Sexo:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Picker WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Chip:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Vacunado:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Picker WidthRequest="150"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Esterilizado:" FontSize="25" VerticalTextAlignment="Center"/>
+                    <Picker WidthRequest="150"/>
+                </HorizontalStackLayout>
+
+                <Button Text="Modificar" BackgroundColor="ForestGreen"/>
+            </VerticalStackLayout>    
+        </ScrollView>
+        
+    </VerticalStackLayout>
+</ContentPage>

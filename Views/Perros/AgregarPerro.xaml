@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DPAV.Views.Perros.AgregarPerro"
+             Title="AgregarPerro">
+    <VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="10">
+
+                <!-- Nombre -->
+                <Label Text="Nombre" FontSize="18"/>
+                <Entry Placeholder="Ingrese el nombre del perro" x:Name="NombreEntry"/>
+
+                <!-- Raza -->
+                <Label Text="Raza" FontSize="18"/>
+                <Entry Placeholder="Ingrese la raza del perro" x:Name="RazaEntry"/>
+
+                <!-- Edad -->
+                <Label Text="Edad" FontSize="18"/>
+                <Entry Placeholder="Ingrese la edad (en años)" Keyboard="Numeric" x:Name="EdadEntry"/>
+
+                <!-- Color -->
+                <Label Text="Color" FontSize="18"/>
+                <Entry Placeholder="Ingrese el color del perro" x:Name="ColorEntry"/>
+
+                <!-- Altura -->
+                <Label Text="Altura (m)" FontSize="18"/>
+                <Entry Placeholder="Ingrese la altura en metros" Keyboard="Numeric" x:Name="AlturaEntry"/>
+
+                <!-- Tamaño -->
+                <Label Text="Tamaño" FontSize="18"/>
+                <Entry Placeholder="Ingrese el tamaño (Ej. Pequeño, Mediano, Grande)" x:Name="TamanoEntry"/>
+
+                <!-- Peso -->
+                <Label Text="Peso (kg)" FontSize="18"/>
+                <Entry Placeholder="Ingrese el peso en kg" Keyboard="Numeric" x:Name="PesoEntry"/>
+
+                <!-- Sexo -->
+                <Label Text="Sexo" FontSize="18"/>
+                <Picker x:Name="SexoPicker">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Macho</x:String>
+                            <x:String>Hembra</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <!-- Estatus -->
+                <Label Text="Estatus" FontSize="18"/>
+                <Entry Placeholder="Ingrese el estatus (Ej. Adoptado, Disponible)" x:Name="EstatusEntry"/>
+
+                <!-- Fecha de Nacimiento -->
+                <Label Text="Fecha de Nacimiento" FontSize="18"/>
+                <DatePicker x:Name="FechaNacimientoPicker"/>
+
+                <!-- Chip -->
+                <Label Text="Chip" FontSize="18"/>
+                <Entry Placeholder="Ingrese el número de chip (si aplica)" x:Name="ChipEntry"/>
+
+                <!-- Vacunado -->
+                <CheckBox x:Name="VacunadoCheckBox"/>
+                <Label Text="¿Vacunado?" VerticalOptions="Center"/>
+
+                <!-- Esterilizado -->
+                <CheckBox x:Name="EsterilizadoCheckBox"/>
+                <Label Text="¿Esterilizado?" VerticalOptions="Center"/>
+
+                <!-- Botón para agregar -->
+                <Button Text="Agregar Perro" 
+                    BackgroundColor="Green" 
+                    TextColor="White" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

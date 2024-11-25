@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DPAV.Views.Usuarios.Usuario"
+             Title="Usuario">
+    <VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout Spacing="20" Padding="20">
+
+                <!-- Imagen del perfil -->
+                <Frame CornerRadius="100" HeightRequest="150" WidthRequest="150" Padding="0" HorizontalOptions="Center">
+                    <Image Source="perfil_placeholder.png" Aspect="AspectFill"/>
+                </Frame>
+
+                <!-- Nombre del usuario -->
+                <Label Text="Nombre de Usuario"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"/>
+
+                <!-- Información general -->
+                <Label Text="Correo electrónico:"
+                   FontSize="18"
+                   FontAttributes="Bold"/>
+                <Label Text="usuario@ejemplo.com"
+                   FontSize="18"/>
+
+                <Label Text="Teléfono:"
+                   FontSize="18"
+                   FontAttributes="Bold"/>
+                <Label Text="+123 456 789"
+                   FontSize="18"/>
+
+                <!-- Botones de acción -->
+                <Button Text="Editar Perfil"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,10"/>
+
+                <Button Text="Cerrar Sesión"
+                    BackgroundColor="Crimson"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,10"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </VerticalStackLayout>
+</ContentPage>

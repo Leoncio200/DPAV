@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DPAV.Views.Perros.Perros"
+             Title="">
+    <VerticalStackLayout>
+        <Label Text="Mis Perros" FontSize="40" HorizontalOptions="Center" Margin="0,0,0,20"/>
+
+        <!--asi debe quedar la vista-->
+        <StackLayout Orientation="Horizontal" Padding="40,0">
+            <Label Text="Max" FontSize="30" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
+            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                <Button Text="Modificar" BackgroundColor="Orange" Clicked="ButtonModificar_Clicked"/>
+                <Button Text="Eliminar" BackgroundColor="Red"/>
+            </StackLayout>
+        </StackLayout>
+        
+        <CollectionView>
+            
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

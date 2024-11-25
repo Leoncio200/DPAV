@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="DPAV.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:DPAV"
+    Shell.FlyoutBehavior="Disabled"
+    Title="DPAV">
+
+    <TabBar>
+        <Tab Title="Perros">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Perros.Perros}"/>
+        </Tab>
+
+
+        <Tab Title="Razas">
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Razas.Razas}" />
+        </Tab>
+
+
+        <Tab Title="Roles" >
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Roles.Roles}" />
+        </Tab>
+
+        <Tab Title="Usuario" >
+            <ShellContent ContentTemplate="{DataTemplate local:Views.Usuarios.Usuario}" />
+        </Tab>
+    </TabBar>
+
+</Shell>

@@ -16,6 +16,6 @@ public partial class Login : ContentPage
 
     private void ButtonInicio_Clicked(object sender, EventArgs e)
     {
-        App.Current.MainPage = new NavigationPage(new Perros.Perros());
+        App.Current.MainPage = new NavigationPage(new AppShell());
     }
 }

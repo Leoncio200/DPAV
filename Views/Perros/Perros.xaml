@@ -3,20 +3,88 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Perros.Perros"
              Title="">
-    <VerticalStackLayout>
-        <Label Text="Mis Perros" FontSize="40" HorizontalOptions="Center" Margin="0,0,0,20"/>
+    <VerticalStackLayout Padding="20" Spacing="10">
 
-        <!--asi debe quedar la vista-->
-        <StackLayout Orientation="Horizontal" Padding="40,0">
-            <Label Text="Max" FontSize="30" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"/>
-            <StackLayout Spacing="10" Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                <Button Text="Modificar" BackgroundColor="Orange" Clicked="ButtonModificar_Clicked"/>
-                <Button Text="Eliminar" BackgroundColor="Red"/>
-            </StackLayout>
-        </StackLayout>
-        
-        <CollectionView>
-            
+        <!-- Título de la página -->
+        <Label Text="Mis Perros" 
+               FontSize="40" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               Margin="0,0,0,20"/>
+
+        <!-- Botón de agregar perro -->
+        <Button Text="Agregar Perro" 
+                BackgroundColor="Green" 
+                TextColor="White" 
+                CornerRadius="10"
+                HorizontalOptions="FillAndExpand"
+                Clicked="OnAgregarClicked"
+                Margin="0,0,0,10"/>
+
+        <Grid ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
+
+            <!-- Nombre del perro -->
+            <Label Grid.Column="0"
+           Text="Max" 
+           FontSize="24" 
+           VerticalOptions="CenterAndExpand" 
+           HorizontalOptions="Start" />
+
+            <!-- Botón Modificar -->
+            <Button Grid.Column="1"
+            Text="Modificar" 
+            BackgroundColor="Orange" 
+            TextColor="White" 
+            Clicked="OnModificarClicked"
+            HorizontalOptions="End"
+            Margin="5,0,5,0"/>
+
+            <!-- Botón Eliminar -->
+            <Button Grid.Column="2"
+            Text="Eliminar" 
+            BackgroundColor="Red" 
+            TextColor="White" 
+            HorizontalOptions="End"
+            Margin="5,0,5,0"/>
+        </Grid>
+
+        <!-- Lista de perros -->
+        <CollectionView x:Name="PerrosCollectionView"
+                        ItemsSource="{Binding ListaDePerros}"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="10" Margin="0,0,0,10" BackgroundColor="LightGray">
+                        <Grid ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
+
+                            <!-- Nombre del perro -->
+                            <Label Grid.Column="0"
+                                   Text="{Binding Nombre}" 
+                                   FontSize="24" 
+                                   VerticalOptions="CenterAndExpand" 
+                                   HorizontalOptions="Start" />
+
+                            <!-- Botón Modificar -->
+                            <Button Grid.Column="1"
+                                    Text="Modificar" 
+                                    BackgroundColor="Orange" 
+                                    TextColor="White" 
+                                    Clicked="OnModificarClicked"
+                                    HorizontalOptions="End"
+                                    Margin="5,0,5,0"/>
+
+                            <!-- Botón Eliminar -->
+                            <Button Grid.Column="2"
+                                    Text="Eliminar" 
+                                    BackgroundColor="Red" 
+                                    TextColor="White" 
+                                    HorizontalOptions="End"
+                                    Margin="5,0,5,0"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
         </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>

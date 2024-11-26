@@ -2,11 +2,86 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Razas.Razas"
-             Title="Razas">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="">
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <!-- Título de la página -->
+        <Label Text="Razas" 
+           FontSize="40" 
+           FontAttributes="Bold" 
+           HorizontalOptions="Center" 
+           Margin="0,0,0,20"/>
+
+        <!-- Botón de agregar perro -->
+        <Button Text="Agregar Raza" 
+            BackgroundColor="Green" 
+            TextColor="White" 
+            CornerRadius="10"
+            HorizontalOptions="FillAndExpand"
+            Margin="0,0,0,10"/>
+
+        <Grid ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
+
+            <!-- Nombre del perro -->
+            <Label Grid.Column="0"
+               Text="Pitbull" 
+               FontSize="24" 
+               VerticalOptions="CenterAndExpand" 
+               HorizontalOptions="Start" />
+
+            <!-- Botón Modificar -->
+            <Button Grid.Column="1"
+                Text="Modificar" 
+                BackgroundColor="Orange" 
+                TextColor="White" 
+                HorizontalOptions="End"
+                Margin="5,0,5,0"/>
+
+            <!-- Botón Eliminar -->
+            <Button Grid.Column="2"
+                Text="Eliminar" 
+                BackgroundColor="Red" 
+                TextColor="White" 
+                HorizontalOptions="End"
+                Margin="5,0,5,0"/>
+                </Grid>
+
+        <!-- Lista de perros -->
+        <CollectionView x:Name="RazasCollectionView"
+                    ItemsSource="{Binding ListaDeRazas}"
+                    SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="10" Padding="10" Margin="0,0,0,10" BackgroundColor="LightGray">
+                        <Grid ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
+
+                            <!-- Nombre del perro -->
+                            <Label Grid.Column="0"
+                               Text="{Binding Nombre}" 
+                               FontSize="24" 
+                               VerticalOptions="CenterAndExpand" 
+                               HorizontalOptions="Start" />
+
+                            <!-- Botón Modificar -->
+                            <Button Grid.Column="1"
+                                Text="Modificar" 
+                                BackgroundColor="Orange" 
+                                TextColor="White" 
+                                HorizontalOptions="End"
+                                Margin="5,0,5,0"/>
+
+                            <!-- Botón Eliminar -->
+                            <Button Grid.Column="2"
+                                Text="Eliminar" 
+                                BackgroundColor="Red" 
+                                TextColor="White" 
+                                HorizontalOptions="End"
+                                Margin="5,0,5,0"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 </ContentPage>

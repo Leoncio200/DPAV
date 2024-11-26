@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Usuarios.Usuario"
-             Title="Usuario">
+             Title="">
     <VerticalStackLayout>
         <ScrollView>
             <VerticalStackLayout Spacing="20" Padding="20">
@@ -37,7 +37,8 @@
                     TextColor="White"
                     CornerRadius="10"
                     HorizontalOptions="FillAndExpand"
-                    Margin="0,10"/>
+                    Margin="0,10"
+                    Clicked="BtnModificarPerfil_Clicked"/>
 
                 <Button Text="Cerrar Sesión"
                     BackgroundColor="Crimson"

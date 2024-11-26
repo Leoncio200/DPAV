@@ -6,9 +6,14 @@ public partial class Perros : ContentPage
 	{
 		InitializeComponent();
 	}
-
-    private async void ButtonModificar_Clicked(object sender, EventArgs e)
+    
+    private async void OnModificarClicked(object sender, EventArgs e)
     {
 		await Navigation.PushAsync(new ModificarPerro());
+    }
+
+    private async void OnAgregarClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AgregarPerro());
     }
 }

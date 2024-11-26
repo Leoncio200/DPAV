@@ -3,57 +3,77 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Perros.ModificarPerro"
              Title="ModificarPerro">
-    <VerticalStackLayout>
-        <ScrollView HorizontalOptions="CenterAndExpand" Orientation="Vertical" VerticalScrollBarVisibility="Always">
-            <VerticalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand">
-                <HorizontalStackLayout>
-                    <Label Text="Nombre:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Raza:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Picker WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Edad:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Color:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Altura:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Tamaño:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Peso:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Sexo:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Picker WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Chip:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Entry Placeholder="" FontSize="25" WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Vacunado:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Picker WidthRequest="150"/>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout>
-                    <Label Text="Esterilizado:" FontSize="25" VerticalTextAlignment="Center"/>
-                    <Picker WidthRequest="150"/>
-                </HorizontalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
 
-                <Button Text="Modificar" BackgroundColor="ForestGreen"/>
-            </VerticalStackLayout>    
-        </ScrollView>
-        
-    </VerticalStackLayout>
+            <!-- Nombre -->
+            <Label Text="Nombre" FontSize="18"/>
+            <Entry Placeholder="Ingrese el nombre del perro" x:Name="NombreEntry"/>
+
+            <!-- Raza -->
+            <Label Text="Raza" FontSize="18"/>
+            <Entry Placeholder="Ingrese la raza del perro" x:Name="RazaEntry"/>
+
+            <!-- Edad -->
+            <Label Text="Edad (años)" FontSize="18"/>
+            <Entry Placeholder="Ingrese la edad en años" Keyboard="Numeric" x:Name="EdadEntry"/>
+
+            <!-- Color -->
+            <Label Text="Color" FontSize="18"/>
+            <Entry Placeholder="Ingrese el color del perro" x:Name="ColorEntry"/>
+
+            <!-- Altura -->
+            <Label Text="Altura (metros)" FontSize="18"/>
+            <Entry Placeholder="Ingrese la altura en metros" Keyboard="Numeric" x:Name="AlturaEntry"/>
+
+            <!-- Tamaño -->
+            <Label Text="Tamaño" FontSize="18"/>
+            <Entry Placeholder="Ingrese el tamaño (Ej. Pequeño, Mediano, Grande)" x:Name="TamanoEntry"/>
+
+            <!-- Peso -->
+            <Label Text="Peso (kg)" FontSize="18"/>
+            <Entry Placeholder="Ingrese el peso en kg" Keyboard="Numeric" x:Name="PesoEntry"/>
+
+            <!-- Sexo -->
+            <Label Text="Sexo" FontSize="18"/>
+            <Picker x:Name="SexoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Macho</x:String>
+                        <x:String>Hembra</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Estatus -->
+            <Label Text="Estatus" FontSize="18"/>
+            <Entry Placeholder="Ingrese el estatus (Ej. Adoptado, Disponible)" x:Name="EstatusEntry"/>
+
+            <!-- Fecha de Nacimiento -->
+            <Label Text="Fecha de Nacimiento" FontSize="18"/>
+            <DatePicker x:Name="FechaNacimientoPicker"/>
+
+            <!-- Chip -->
+            <Label Text="Chip" FontSize="18"/>
+            <Entry Placeholder="Ingrese el número de chip (si aplica)" x:Name="ChipEntry"/>
+
+            <!-- Vacunado -->
+            <HorizontalStackLayout>
+                <CheckBox x:Name="VacunadoCheckBox"/>
+                <Label Text="¿Vacunado?" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Esterilizado -->
+            <HorizontalStackLayout>
+                <CheckBox x:Name="EsterilizadoCheckBox"/>
+                <Label Text="¿Esterilizado?" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Botón para guardar cambios -->
+            <Button Text="Guardar Cambios" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    CornerRadius="10"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

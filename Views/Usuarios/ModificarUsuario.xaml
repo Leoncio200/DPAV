@@ -4,9 +4,31 @@
              x:Class="DPAV.Views.Usuarios.ModificarUsuario"
              Title="ModificarUsuario">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="10">
+
+                <!-- Nombre -->
+                <Label Text="Nombre" FontSize="18"/>
+                <Entry Placeholder="Ingrese el nombre" x:Name="NombreEntry"/>
+
+                <!-- Correo electrónico -->
+                <Label Text="Correo Electrónico" FontSize="18"/>
+                <Entry Placeholder="Ingrese el correo electrónico" Keyboard="Email" x:Name="CorreoEntry"/>
+
+                <!-- Teléfono -->
+                <Label Text="Teléfono" FontSize="18"/>
+                <Entry Placeholder="Ingrese el número de teléfono" Keyboard="Telephone" x:Name="TelefonoEntry"/>
+
+                <!-- Dirección -->
+                <Label Text="Dirección" FontSize="18"/>
+                <Editor Placeholder="Ingrese la dirección" x:Name="DireccionEditor" HeightRequest="100"/>
+
+                <!-- Botón para guardar cambios -->
+                <Button Text="Guardar Cambios" 
+                    BackgroundColor="Green" 
+                    TextColor="White" 
+                    CornerRadius="10"/>
+            </VerticalStackLayout>
+        </ScrollView>
     </VerticalStackLayout>
 </ContentPage>

@@ -6,4 +6,9 @@ public partial class Usuario : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void BtnModificarPerfil_Clicked(object sender, EventArgs e)
+    {
+		await Navigation.PushAsync(new ModificarUsuario());
+    }
 }

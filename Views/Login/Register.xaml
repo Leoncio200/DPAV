@@ -3,24 +3,84 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Login.Register"
              Title="Register">
-    <VerticalStackLayout>
-        <VerticalStackLayout VerticalOptions="StartAndExpand">
-            <Label Text="Login" FontSize="50" HorizontalTextAlignment="Center"/>
-        </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="Center">
 
-        <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="50">
-            <HorizontalStackLayout>
-                <Label Text="Usuario:" VerticalTextAlignment="Center" FontSize="30"/>
-                <Entry Placeholder="Anderson" FontSize="30"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Margin="0,30,0,0">
-                <Label Text="Contraseña:" VerticalTextAlignment="Center" FontSize="30"/>
-                <Entry Placeholder="********" IsPassword="True" FontSize="30"/>
-            </HorizontalStackLayout>
-        </VerticalStackLayout>
+            <!-- Título -->
+            <Label Text="Registro de Usuario"
+                   FontSize="30"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
 
-        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand">
-            <Button Text="Aceptar" WidthRequest="200" CornerRadius="20" FontSize="20"/>
+            <!-- Nombre -->
+            <Label Text="Nombre" FontSize="18"/>
+            <Entry x:Name="NombreEntry"
+                   Placeholder="Ingrese su nombre"
+                   Margin="0,0,0,10"/>
+
+            <!-- Apellido Paterno -->
+            <Label Text="Apellido Paterno" FontSize="18"/>
+            <Entry x:Name="ApellidoPaternoEntry"
+                   Placeholder="Ingrese su apellido paterno"
+                   Margin="0,0,0,10"/>
+
+            <!-- Teléfono -->
+            <Label Text="Teléfono" FontSize="18"/>
+            <Entry x:Name="TelefonoEntry"
+                   Placeholder="Ingrese su teléfono"
+                   Keyboard="Telephone"
+                   MaxLength="10"
+                   Margin="0,0,0,10"/>
+
+            <!-- Correo Electrónico -->
+            <Label Text="Correo Electrónico" FontSize="18"/>
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Ingrese su correo electrónico"
+                   Keyboard="Email"
+                   Margin="0,0,0,10"/>
+
+            <!-- Dirección -->
+            <Label Text="Dirección" FontSize="18"/>
+            <Entry x:Name="DireccionEntry"
+                   Placeholder="Ingrese su dirección"
+                   Margin="0,0,0,10"/>
+
+            <!-- Ciudad -->
+            <Label Text="Ciudad" FontSize="18"/>
+            <Entry x:Name="CiudadEntry"
+                   Placeholder="Ingrese su ciudad"
+                   Margin="0,0,0,10"/>
+
+            <!-- Código Postal -->
+            <Label Text="Código Postal" FontSize="18"/>
+            <Entry x:Name="CodigoPostalEntry"
+                   Placeholder="Ingrese su código postal"
+                   Keyboard="Numeric"
+                   Margin="0,0,0,10"/>
+
+            <!-- Contraseña -->
+            <Label Text="Contraseña" FontSize="18"/>
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Cree una contraseña"
+                   IsPassword="True"
+                   Margin="0,0,0,10"/>
+
+            <!-- Confirmar Contraseña -->
+            <Label Text="Confirmar Contraseña" FontSize="18"/>
+            <Entry x:Name="ConfirmPasswordEntry"
+                   Placeholder="Confirme su contraseña"
+                   IsPassword="True"
+                   Margin="0,0,0,20"/>
+
+            <!-- Botón Registrar -->
+            <Button Text="Registrar"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="OnRegisterClicked"/>
+
         </VerticalStackLayout>
-    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

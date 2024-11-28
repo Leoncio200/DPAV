@@ -3,29 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DPAV.Views.Login.Login"
              Title="">
-    <VerticalStackLayout>
-        <VerticalStackLayout VerticalOptions="StartAndExpand">
-            <Label Text="Login" FontSize="50" HorizontalTextAlignment="Center"/>
+    <StackLayout Padding="30" Spacing="20" VerticalOptions="Center" HorizontalOptions="Center">
+
+        <!-- Título -->
+        <Label Text="Inicio de Sesión"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+        <!-- Campo Usuario -->
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Usuario:" FontSize="16" TextColor="Gray" />
+            <Entry x:Name="UsernameEntry"
+                       Placeholder="Ingrese su usuario"
+                       FontSize="14"
+                       BackgroundColor="#F5F5F5"
+                       TextColor="Black"
+                       Margin="0,0,0,10"
+                       HeightRequest="40"
+                       HorizontalOptions="FillAndExpand" />
         </VerticalStackLayout>
 
-        <VerticalStackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="50">
-            <HorizontalStackLayout>
-                <Label Text="Usuario:" VerticalTextAlignment="Center" FontSize="30"/>
-                <Entry Placeholder="Anderson" FontSize="30"/>
-            </HorizontalStackLayout>
-            <HorizontalStackLayout Margin="0,30,0,0">
-                <Label Text="Contraseña:" VerticalTextAlignment="Center" FontSize="30"/>
-                <Entry Placeholder="********" IsPassword="True" FontSize="30"/>
-            </HorizontalStackLayout>
+        <!-- Campo Contraseña -->
+        <VerticalStackLayout Spacing="5">
+            <Label Text="Contraseña:" FontSize="16" TextColor="Gray" />
+            <Entry x:Name="PasswordEntry"
+                       Placeholder="Ingrese su contraseña"
+                       FontSize="14"
+                       IsPassword="True"
+                       BackgroundColor="#F5F5F5"
+                       TextColor="Black"
+                       Margin="0,0,0,10"
+                       HeightRequest="40"
+                       HorizontalOptions="FillAndExpand" />
         </VerticalStackLayout>
 
-        <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="EndAndExpand">
-            <Button Text="Aceptar" WidthRequest="200" CornerRadius="20" FontSize="20" Clicked="ButtonInicio_Clicked"/>
-        </VerticalStackLayout>
+        <!-- Botón Aceptar -->
+        <Button Text="Iniciar Sesión"
+                    FontSize="16"
+                    BackgroundColor="#4A90E2"
+                    TextColor="White"
+                    HeightRequest="45"
+                    CornerRadius="10"
+                    Clicked="OnLogin"
+                    HorizontalOptions="FillAndExpand" />
 
-        <VerticalStackLayout HorizontalOptions="Start" Margin="0,50,0,0">
-            <Button Text="Registrarme" BackgroundColor="Transparent" TextColor="Blue" Clicked="ButtonRegistro_Clicked"/>
-        </VerticalStackLayout>
-        
-    </VerticalStackLayout>
+        <!-- Botón Registrarme -->
+        <StackLayout HorizontalOptions="Center" Margin="0,20,0,0">
+            <Label Text="¿No tienes cuenta?"
+                       FontSize="14"
+                       TextColor="Gray"
+                       HorizontalOptions="Center" />
+            <Button Text="Regístrate"
+                        FontSize="14"
+                        BackgroundColor="Transparent"
+                        TextColor="#4A90E2"
+                        Clicked="OnRegister"
+                        HorizontalOptions="Center" />
+        </StackLayout>
+
+    </StackLayout>
 </ContentPage>

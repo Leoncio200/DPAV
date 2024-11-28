@@ -7,19 +7,22 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Newtonsoft.Json;
 
 namespace DPAV.ViewModels
 {
     public class UsuarioViewModel
     {
         private ObservableCollection<Usuario> _usuarios;
-        private dynamic _nuevoUsuario;
+        private Usuario _nuevoUsuario;
         private bool _isUsuariosEmpty;
         private bool _isInitialLoad = true;
         private bool _isLoading = false;
+        private readonly ServiceHttpClient _serviceHttpClient;
 
         public ICommand EliminarUsuarioCommand { get; }
 
@@ -30,7 +33,7 @@ namespace DPAV.ViewModels
             set { SetProperty(ref _usuarios, value); }
         }
 
-        public dynamic NuevoUsuario
+        public Usuario NuevoUsuario
         {
             get { return _nuevoUsuario; }
             set { SetProperty(ref _nuevoUsuario, value); }
@@ -42,8 +45,71 @@ namespace DPAV.ViewModels
             set { SetProperty(ref _isUsuariosEmpty, value); }
         }
 
+        public async Task Login()
+        {
+            try
+            {
+                var loginForm = JsonConvert.SerializeObject(NuevoUsuario);
+                // Llamar a la API para registrar al usuario
+                var response = await _serviceHttpClient.PostAsync("login", loginForm);
+
+                // Procesar la respuesta
+                var user = JsonConvert.DeserializeObject<Usuario>(response);
+                if (user != null)
+                {
+                    Usuarios.Add(user);
+                    NuevoUsuario = new Usuario();
+                    Singleton.Instance
+                    // Limpiar el formulario
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al intentar logearse: {ex.Message}", "OK");
+            }
+        }
+
+        public async Task RegistrarUsuario()
+        {
+            try
+            {
+                _isLoading = true;
+
+                var loginForm = JsonConvert.SerializeObject(NuevoUsuario);
+                // Llamar a la API para registrar al usuario
+                var response = await _serviceHttpClient.PostAsync("registrar", NuevoUsuario);
+
+                // Procesar la respuesta
+                var user = JsonConvert.DeserializeObject<Usuario>(response);
+
+                if (user != null)
+                {
+                    Usuarios.Add(user);
+                    NuevoUsuario = new Usuario(); // Limpiar el formulario
+                    await App.Current.MainPage.DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
+                    return;
+                }
+                await App.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el usuario", "OK");
+            }
+            catch (HttpRequestException ex)
+            {
+                // Manejar errores específicos
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al registrar el usuario: {ex.Message}", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores generales
+                await App.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
+            }
+            finally
+            {
+                _isLoading = false;
+            }
+        }
+
         public UsuarioViewModel()
         {
+            _serviceHttpClient = new ServiceHttpClient();
             Usuarios = new ObservableCollection<Usuario>();
             //EliminarCasaCommand = new Command<Perro>(async (casa) => await DeleteCasa(casa));
         }

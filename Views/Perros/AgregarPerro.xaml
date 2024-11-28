@@ -58,12 +58,16 @@
             <Entry Placeholder="Ingrese el número de chip (si aplica)" x:Name="ChipEntry"/>
 
             <!-- Vacunado -->
-            <CheckBox x:Name="VacunadoCheckBox"/>
-            <Label Text="¿Vacunado?" VerticalOptions="Center"/>
+            <HorizontalStackLayout>
+                <CheckBox x:Name="VacunadoCheckBox"/>
+                <Label Text="¿Vacunado?" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
 
             <!-- Esterilizado -->
-            <CheckBox x:Name="EsterilizadoCheckBox"/>
-            <Label Text="¿Esterilizado?" VerticalOptions="Center"/>
+            <HorizontalStackLayout>
+                <CheckBox x:Name="EsterilizadoCheckBox"/>
+                <Label Text="¿Esterilizado?" VerticalOptions="Center"/>
+            </HorizontalStackLayout>
 
             <!-- Botón para agregar -->
             <Button Text="Agregar Perro" 

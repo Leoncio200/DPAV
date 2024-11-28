@@ -1,21 +1,23 @@
 using DPAV.Views.Perros;
+using System.Windows.Input;
 
 namespace DPAV.Views.Login;
 
 public partial class Login : ContentPage
 {
-	public Login()
+    public Login()
 	{
 		InitializeComponent();
-	}
-
-    private async void ButtonRegistro_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new Register());
     }
 
-    private void ButtonInicio_Clicked(object sender, EventArgs e)
+    private void OnLogin(object sender, EventArgs e)
     {
         App.Current.MainPage = new NavigationPage(new AppShell());
     }
+
+    private void OnRegister(object sender, EventArgs e)
+    {
+        App.Current.MainPage = new Register();
+    }
+
 }

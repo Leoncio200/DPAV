@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,34 +13,50 @@ namespace DPAV.Models
         [Key]
         public int Id { get; set; }
 
+        [JsonProperty("nombre")]
         [Required]
-        public required string Nombre { get; set; }
+        public string? Nombre { get; set; }
 
+        [JsonProperty("apellido_paterno")]
         [Required]
-        public required string ApellidoPaterno { get; set; }
+        public string? ApellidoPaterno { get; set; }
 
+        [JsonProperty("telefono")]
         [MaxLength(10)]
-        public required string Telefono { get; set; }
+        public string? Telefono { get; set; }
 
         [MaxLength(4)]
-        public string Codigo { get; set; }
+        public string? Codigo { get; set; }
         [MaxLength(50)]
-        public string Estado { get; set; }
+        public string? Estado { get; set; }
+
+        [JsonProperty("email")]
         [Required, MaxLength(50)]
-        public required string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
-        public string Direccion { get; set; }
+        public string? Direccion { get; set; }
         [Required]
-        public string Ciudad { get; set; }
+        public string? Ciudad { get; set; }
         [Required]
-        public string CodigoPostal { get; set; }
+        public string? CodigoPostal { get; set; }
         [Required]
         public bool Activo { get; set; }
         [Required]
         public int RoleId { get; set; }
         [Required]
         public int EstadoId { get; set; }
+
+        [JsonProperty("password")]
         [Required]
         public string Password { get; set; }
+
+        public Usuario()
+        {
+            Nombre = string.Empty;
+            ApellidoPaterno = string.Empty;
+            Telefono = string.Empty;
+            Email = string.Empty;
+            Password = string.Empty;
+        }
     }
 }

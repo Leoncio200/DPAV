@@ -49,17 +49,28 @@ namespace DPAV.ViewModels
         {
             try
             {
-                var loginForm = JsonConvert.SerializeObject(NuevoUsuario);
                 // Llamar a la API para registrar al usuario
-                var response = await _serviceHttpClient.PostAsync("login", loginForm);
+                var response = await _serviceHttpClient.PostAsync("login", NuevoUsuario);
 
                 // Procesar la respuesta
-                var user = JsonConvert.DeserializeObject<Usuario>(response);
+                using JsonDocument document = JsonDocument.Parse(response);
+                JsonElement root = document.RootElement;
+
+                // Acceder a las propiedades del JSON
+                string message = root.GetProperty("message").ToString();
+                string userElement = root.GetProperty("user").ToString();
+                string token = root.GetProperty("token").ToString();
+
+                var user = JsonConvert.DeserializeObject<Usuario>(userElement, new JsonSerializerSettings { MissingMemberHandling = MissingMemberHandling.Ignore, NullValueHandling = NullValueHandling.Ignore});
+
                 if (user != null)
                 {
+                    Singleton.Instance.Token = token;
+                    Singleton.Instance.User = userElement;
+
                     Usuarios.Add(user);
                     NuevoUsuario = new Usuario();
-                    Singleton.Instance
+                    //Singleton.Instance
                     // Limpiar el formulario
                 }
             }
@@ -75,7 +86,6 @@ namespace DPAV.ViewModels
             {
                 _isLoading = true;
 
-                var loginForm = JsonConvert.SerializeObject(NuevoUsuario);
                 // Llamar a la API para registrar al usuario
                 var response = await _serviceHttpClient.PostAsync("registrar", NuevoUsuario);
 

@@ -11,7 +11,7 @@ namespace DPAV.Models
     public class ServiceHttpClient
     {
         private readonly HttpClient _httpClient;
-        private readonly string _path = "http://192.168.1.4:8000/api/";
+        private readonly string _path = "http://192.168.252.242:8000/api/";
         public ServiceHttpClient()
         {
             _httpClient = new HttpClient();
@@ -30,10 +30,11 @@ namespace DPAV.Models
         // Método POST
         public async Task<string> PostAsync(string url, object data)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(data), Encoding.UTF8, "application/json");
+            var body = JsonConvert.SerializeObject(data);
+            var content = new StringContent(body, Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync(_path + url, content);
 
-            response.EnsureSuccessStatusCode();
+            //response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsStringAsync();
         }

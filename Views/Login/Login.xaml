@@ -14,9 +14,9 @@
 
         <!-- Campo Usuario -->
         <VerticalStackLayout Spacing="5">
-            <Label Text="Usuario:" FontSize="16" TextColor="Gray" />
-            <Entry x:Name="UsernameEntry"
-                       Placeholder="Ingrese su usuario"
+            <Label Text="Correo:" FontSize="16" TextColor="Gray" />
+            <Entry x:Name="EmailEntry"
+                       Placeholder="Ingrese su correo"
                        FontSize="14"
                        BackgroundColor="#F5F5F5"
                        TextColor="Black"

@@ -50,7 +50,7 @@ namespace DPAV.ViewModels
             try
             {
                 // Llamar a la API para registrar al usuario
-                var response = await _serviceHttpClient.PostAsync("login", NuevoUsuario);
+                var response = await _serviceHttpClient.PostAsync("login", NuevoUsuario, false);
 
                 // Procesar la respuesta
                 using JsonDocument document = JsonDocument.Parse(response);
@@ -65,8 +65,7 @@ namespace DPAV.ViewModels
 
                 if (user != null)
                 {
-                    Singleton.Instance.Token = token;
-                    Singleton.Instance.User = userElement;
+                    await Singleton.Instance.SetSession(userElement, token, user);
 
                     Usuarios.Add(user);
                     NuevoUsuario = new Usuario();
@@ -87,7 +86,7 @@ namespace DPAV.ViewModels
                 _isLoading = true;
 
                 // Llamar a la API para registrar al usuario
-                var response = await _serviceHttpClient.PostAsync("registrar", NuevoUsuario);
+                var response = await _serviceHttpClient.PostAsync("registrar", NuevoUsuario, false);
 
                 // Procesar la respuesta
                 var user = JsonConvert.DeserializeObject<Usuario>(response);
@@ -115,6 +114,33 @@ namespace DPAV.ViewModels
             {
                 _isLoading = false;
             }
+        }
+
+        public async Task<bool> Logout()
+        {
+            try
+            {
+                // Llamar a la API para registrar al usuario
+                var response = await _serviceHttpClient.PostAsync("logout", NuevoUsuario, true);
+
+                
+                if (response.Contains("Sesión cerrada"))
+                {
+                    Singleton.Instance.Logout();
+
+                    Usuarios.Clear();
+                    NuevoUsuario = new Usuario();
+                   
+                    return true;
+                }
+                await App.Current.MainPage.DisplayAlert("Error", $"No se pudo cerrar la sesion.", "OK");
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al intentar cerrar sesion: {ex.Message}", "OK");
+            }
+
+            return false;
         }
 
         public UsuarioViewModel()

@@ -21,36 +21,9 @@
                 Clicked="OnAgregarClicked"
                 Margin="0,0,0,10"/>
 
-        <Grid ColumnDefinitions="*,Auto,Auto" VerticalOptions="Center">
-
-            <!-- Nombre del perro -->
-            <Label Grid.Column="0"
-           Text="Max" 
-           FontSize="24" 
-           VerticalOptions="CenterAndExpand" 
-           HorizontalOptions="Start" />
-
-            <!-- Botón Modificar -->
-            <Button Grid.Column="1"
-            Text="Modificar" 
-            BackgroundColor="Orange" 
-            TextColor="White" 
-            Clicked="OnModificarClicked"
-            HorizontalOptions="End"
-            Margin="5,0,5,0"/>
-
-            <!-- Botón Eliminar -->
-            <Button Grid.Column="2"
-            Text="Eliminar" 
-            BackgroundColor="Red" 
-            TextColor="White" 
-            HorizontalOptions="End"
-            Margin="5,0,5,0"/>
-        </Grid>
-
         <!-- Lista de perros -->
         <CollectionView x:Name="PerrosCollectionView"
-                        ItemsSource="{Binding ListaDePerros}"
+                        ItemsSource="{Binding Perros}"
                         SelectionMode="None">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -71,7 +44,8 @@
                                     TextColor="White" 
                                     Clicked="OnModificarClicked"
                                     HorizontalOptions="End"
-                                    Margin="5,0,5,0"/>
+                                    Margin="5,0,5,0"
+                                    CommandParameter="{Binding}"/>
 
                             <!-- Botón Eliminar -->
                             <Button Grid.Column="2"
@@ -79,7 +53,9 @@
                                     BackgroundColor="Red" 
                                     TextColor="White" 
                                     HorizontalOptions="End"
-                                    Margin="5,0,5,0"/>
+                                    Margin="5,0,5,0"
+                                    Clicked="OnEliminarClicked"
+                                    CommandParameter="{Binding}"/>
                         </Grid>
                     </Frame>
                 </DataTemplate>

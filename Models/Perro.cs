@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,50 +13,55 @@ namespace DPAV.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [JsonProperty("nombre")]
         [StringLength(255)]
-        public string Nombre { get; set; }
+        public string? Nombre { get; set; }
 
-        [Required]
-        [StringLength(255)]
-        public string Raza { get; set; }
+        [JsonProperty("raza")]
+        public Raza? Raza { get; set; }
 
-        [Required]
+        [JsonProperty("edad")]
         [Range(0, 30)]
         public int Edad { get; set; }
 
-        [Required]
+        [JsonProperty("color")]
         [StringLength(50)]
-        public string Color { get; set; }
+        public string? Color { get; set; }
 
-        [Required]
+        [JsonProperty("altura")]
         [Range(0, 3)]
         public double Altura { get; set; }
 
-        [Required]
+        [JsonProperty("tamaño")]
         [StringLength(50)]
-        public string Tamaño { get; set; }
+        public string? Tamaño { get; set; }
 
-        [Required]
+        [JsonProperty("peso")]
         [Range(0, 100)]
         public double Peso { get; set; }
 
-        [Required]
+        [JsonProperty("sexo")]
         [StringLength(10)]
         public string? Sexo { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string? Estatus { get; set; }
+        public int Estatus { get; set; }
 
+        [JsonProperty("fecha_nacimiento")]
         public DateTime? FechaNacimiento { get; set; }
-
+        
+        [JsonProperty("chip")]
         [StringLength(50)]
         public string? Chip { get; set; }
 
+        [JsonProperty("vacunado")]
         public bool Vacunado { get; set; }
-        public bool Esterilizado { get; set; }
-
+        
+        [JsonProperty("esterilizado")]
+        public string? Esterilizado { get; set; }
+        
+        [JsonProperty("id_raza")]
+        public int IDRaza { get; set; }
 
         public Usuario? User { get; set; }
     }

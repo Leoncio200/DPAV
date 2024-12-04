@@ -12,7 +12,7 @@
 
             <!-- Raza -->
             <Label Text="Raza" FontSize="18"/>
-            <Entry Placeholder="Ingrese la raza del perro" x:Name="RazaEntry"/>
+            <Picker x:Name="razasPicker" ItemDisplayBinding="{Binding Nombre}"/>
 
             <!-- Edad -->
             <Label Text="Edad" FontSize="18"/>
@@ -28,7 +28,15 @@
 
             <!-- Tamaño -->
             <Label Text="Tamaño" FontSize="18"/>
-            <Entry Placeholder="Ingrese el tamaño (Ej. Pequeño, Mediano, Grande)" x:Name="TamanoEntry"/>
+            <Picker x:Name="tamañoPicker">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pequeño</x:String>
+                        <x:String>Mediano</x:String>
+                        <x:String>Grande</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
 
             <!-- Peso -->
             <Label Text="Peso (kg)" FontSize="18"/>
@@ -45,13 +53,9 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <!-- Estatus -->
-            <Label Text="Estatus" FontSize="18"/>
-            <Entry Placeholder="Ingrese el estatus (Ej. Adoptado, Disponible)" x:Name="EstatusEntry"/>
-
             <!-- Fecha de Nacimiento -->
             <Label Text="Fecha de Nacimiento" FontSize="18"/>
-            <DatePicker x:Name="FechaNacimientoPicker"/>
+            <DatePicker x:Name="FechaNacimientoPicker" DateSelected="FechaNacimientoPicker_DateSelected"/>
 
             <!-- Chip -->
             <Label Text="Chip" FontSize="18"/>
@@ -72,7 +76,8 @@
             <!-- Botón para agregar -->
             <Button Text="Agregar Perro" 
             BackgroundColor="Green" 
-            TextColor="White" />
+            TextColor="White" 
+            Clicked="OnClickAceptar"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

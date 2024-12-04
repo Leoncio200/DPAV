@@ -12,7 +12,29 @@ public partial class Login : ContentPage
 	{
         _usuarioViewModel = new UsuarioViewModel();
         BindingContext = _usuarioViewModel;
-		InitializeComponent();
+
+        InitializeComponent();
+    }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        // Cargar sesión y redirigir si el usuario ya está logueado
+        await CheckIfLoggedInAsync();
+    }
+
+    private async Task CheckIfLoggedInAsync()
+    {
+        // Cargar la sesión
+        await Singleton.Instance.LoadSessionAsync();
+
+        // Verificar si el usuario está logueado
+        if (await Singleton.Instance.UserIsLogin())
+        {
+            // Redirigir a la página principal
+            App.Current.MainPage = new NavigationPage(new AppShell());
+        }
     }
 
     private async void OnLogin(object sender, EventArgs e)

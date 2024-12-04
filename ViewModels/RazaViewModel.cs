@@ -1,4 +1,5 @@
 ﻿using DPAV.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -20,6 +22,7 @@ namespace DPAV.ViewModels
         private bool _isRazasEmpty;
         private bool _isInitialLoad = true;
         private bool _isLoading = false;
+        private readonly ServiceHttpClient _serviceHttpClient;
 
         public ICommand EliminarRazaCommand { get; }
 
@@ -45,12 +48,37 @@ namespace DPAV.ViewModels
         public RazaViewModel()
         {
             Razas = new ObservableCollection<Raza>();
+            _serviceHttpClient = new ServiceHttpClient();
             //EliminarCasaCommand = new Command<Perro>(async (casa) => await DeleteCasa(casa));
+        }
+
+        public async Task GetRazas()
+        {
+            try
+            {
+                // Llamar a la API para registrar al usuario
+                var response = await _serviceHttpClient.GetAsync("razas", false);
+
+                // Procesar la respuesta
+                using JsonDocument document = JsonDocument.Parse(response);
+                JsonElement root = document.RootElement;
+
+                var razas = JsonConvert.DeserializeObject<ObservableCollection<Raza>>(response, new JsonSerializerSettings { MissingMemberHandling = MissingMemberHandling.Ignore, NullValueHandling = NullValueHandling.Ignore });
+
+                if (razas != null)
+                {
+                    Razas = razas;
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al intentar traer las razas: {ex.Message}", "OK");
+            }
         }
 
         public async Task GetDatosAsync()
         {
-            //await GetCasas();
+            await GetRazas();
         }
 
         private string NormalizeString(string input)

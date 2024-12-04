@@ -13,7 +13,7 @@
                 </Frame>
 
                 <!-- Nombre del usuario -->
-                <Label Text="Nombre de Usuario"
+                <Label Text="" x:Name="LabelUsuario"
                    FontSize="24"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"/>
@@ -22,30 +22,22 @@
                 <Label Text="Correo electrónico:"
                    FontSize="18"
                    FontAttributes="Bold"/>
-                <Label Text="usuario@ejemplo.com"
+                <Label Text="" x:Name="LabelEmail"
                    FontSize="18"/>
 
                 <Label Text="Teléfono:"
                    FontSize="18"
                    FontAttributes="Bold"/>
-                <Label Text="+123 456 789"
+                <Label Text="" x:Name="LabelTelefono"
                    FontSize="18"/>
-
-                <!-- Botones de acción -->
-                <Button Text="Editar Perfil"
-                    BackgroundColor="DodgerBlue"
-                    TextColor="White"
-                    CornerRadius="10"
-                    HorizontalOptions="FillAndExpand"
-                    Margin="0,10"
-                    Clicked="BtnModificarPerfil_Clicked"/>
 
                 <Button Text="Cerrar Sesión"
                     BackgroundColor="Crimson"
                     TextColor="White"
                     CornerRadius="10"
                     HorizontalOptions="FillAndExpand"
-                    Margin="0,10"/>
+                    Margin="0,10"
+                    Clicked="OnClickLogout"/>
             </VerticalStackLayout>
         </ScrollView>
     </VerticalStackLayout>

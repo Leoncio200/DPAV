@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace DPAV.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        public string Nombre { get; set; }
+
+        [JsonProperty("nombre")]
+        public string? Nombre { get; set; }
+        
+        [JsonProperty("estado")]
         [Required]
         public bool Estado { get; set; }
     }

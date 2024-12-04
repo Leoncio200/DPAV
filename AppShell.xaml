@@ -12,16 +12,6 @@
             <ShellContent ContentTemplate="{DataTemplate local:Views.Perros.Perros}"/>
         </Tab>
 
-
-        <Tab Title="Razas">
-            <ShellContent ContentTemplate="{DataTemplate local:Views.Razas.Razas}" />
-        </Tab>
-
-
-        <Tab Title="Roles" >
-            <ShellContent ContentTemplate="{DataTemplate local:Views.Roles.Roles}" />
-        </Tab>
-
         <Tab Title="Usuario" >
             <ShellContent ContentTemplate="{DataTemplate local:Views.Usuarios.Usuario}" />
         </Tab>

@@ -11,7 +11,7 @@ namespace DPAV.Models
     public class ServiceHttpClient
     {
         private readonly HttpClient _httpClient;
-        private readonly string _path = "http://192.168.1.7:8000/api/";
+        private readonly string _path = "http://192.168.113.13:8000/api/";
         public ServiceHttpClient()
         {
             _httpClient = new HttpClient();

@@ -45,7 +45,7 @@ namespace DPAV.ViewModels
             set { SetProperty(ref _isUsuariosEmpty, value); }
         }
 
-        public async Task Login()
+        public async Task<bool> Login()
         {
             try
             {
@@ -71,12 +71,14 @@ namespace DPAV.ViewModels
                     NuevoUsuario = new Usuario();
                     //Singleton.Instance
                     // Limpiar el formulario
+                    return true;
                 }
             }
             catch (Exception ex)
             {
                 await App.Current.MainPage.DisplayAlert("Error", $"Error al intentar logearse: {ex.Message}", "OK");
             }
+            return false;
         }
 
         public async Task RegistrarUsuario()

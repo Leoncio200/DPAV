@@ -49,9 +49,11 @@ public partial class Login : ContentPage
 
         _usuarioViewModel.NuevoUsuario = User;
 
-        await _usuarioViewModel.Login();
 
-        App.Current.MainPage = new NavigationPage(new AppShell());
+        if (await _usuarioViewModel.Login())
+        {
+            App.Current.MainPage = new NavigationPage(new AppShell());
+        }
     }
 
     private void OnRegister(object sender, EventArgs e)

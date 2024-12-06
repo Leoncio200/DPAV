@@ -38,7 +38,6 @@ public partial class ModificarPerro : ContentPage
             FechaNacimientoPicker.Date = _perro.FechaNacimiento.Value;
         else
             FechaNacimientoPicker.Date = DateTime.Today;
-		ChipEntry.Text = _perro.Chip;
 		EsterilizadoCheckBox.IsChecked = _perro.Esterilizado == "Si" ? true : false;
 
     }
@@ -54,7 +53,10 @@ public partial class ModificarPerro : ContentPage
 
 		_perrosViewModel.NuevoPerro = _perro;
 
-		await _perrosViewModel.ActualizarPerro(_perro.Id);
+		if (await _perrosViewModel.ActualizarPerro(_perro.Id))
+		{
+            await Navigation.PopAsync();
+        }
     }
 
 	private bool VerificarCampos()
@@ -81,9 +83,6 @@ public partial class ModificarPerro : ContentPage
 			_perro.Sexo = SexoPicker.SelectedItem.ToString();
 
 			_perro.FechaNacimiento = FechaNacimientoPicker.Date;
-
-            if (_perro.Chip != ChipEntry.Text)
-                _perro.Chip = ChipEntry.Text;
 
 			_perro.Esterilizado = EsterilizadoCheckBox.IsChecked ? "Si" : "No";
 

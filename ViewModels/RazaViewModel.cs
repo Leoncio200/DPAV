@@ -33,7 +33,7 @@ namespace DPAV.ViewModels
             set { SetProperty(ref _razas, value); }
         }
 
-        public dynamic NuevoPerro
+        public dynamic NuevaRaza
         {
             get { return _nuevaRaza; }
             set { SetProperty(ref _nuevaRaza, value); }
@@ -44,6 +44,123 @@ namespace DPAV.ViewModels
             get { return _isRazasEmpty; }
             set { SetProperty(ref _isRazasEmpty, value); }
         }
+
+        /*public async Task<bool> RegistrarRaza()
+        {
+            try
+            {
+                _isLoading = true;
+
+                // Llamar a la API para registrar al perro
+                var response = await _serviceHttpClient.PostAsync("crearRaza", NuevaRaza, true);
+
+                var raza =  JsonConvert.DeserializeObject<Raza>(response);
+
+                if (raza != null)
+                {
+                    await App.Current.MainPage.DisplayAlert("Success", "Raza creada correctamente", "OK");
+                    return true;
+                }
+                await App.Current.MainPage.DisplayAlert("Error", "No se pudo registrar la raza", "OK");
+            }
+            catch (HttpRequestException ex)
+            {
+                // Manejar errores específicos
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al registrar la raza: {ex.Message}", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores generales
+                await App.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
+            }
+            finally
+            {
+                _isLoading = false;
+            }
+            return false;
+        }
+
+        public async Task<bool> ActualizarRaza(int idPerro)
+        {
+            try
+            {
+                _isLoading = true;
+
+                // Llamar a la API para registrar al perro
+                var response = await _serviceHttpClient.PutAsync("actualizarPerro/" + idPerro, NuevoPerro, true);
+
+                // Procesar la respuesta
+                using JsonDocument document = JsonDocument.Parse(response);
+                JsonElement root = document.RootElement;
+
+                // Acceder a las propiedades del JSON
+                string message = root.GetProperty("message").ToString();
+                string perroElement = root.GetProperty("perro").ToString();
+
+                if (message == "Perro actualizado correctamente")
+                {
+                    await App.Current.MainPage.DisplayAlert("Success", message, "OK");
+                    return true;
+                }
+                await App.Current.MainPage.DisplayAlert("Error", "No se pudo actualizar el perro", "OK");
+            }
+            catch (HttpRequestException ex)
+            {
+                // Manejar errores específicos
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al actualizar el perro: {ex.Message}", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores generales
+                await App.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error: {ex.Message}", "OK");
+            }
+            finally
+            {
+                _isLoading = false;
+            }
+            return false;
+        }
+
+        public async Task EliminarPerro(int idPerro)
+        {
+            try
+            {
+                _isLoading = true;
+
+                // Llamar a la API para registrar al perro
+                var response = await _serviceHttpClient.DeleteAsync("eliminarPerro/" + idPerro, true);
+
+                // Procesar la respuesta
+                using JsonDocument document = JsonDocument.Parse(response);
+                JsonElement root = document.RootElement;
+
+                // Acceder a las propiedades del JSON
+                string message = root.GetProperty("message").ToString();
+
+                if (message == "Perro eliminado correctamente")
+                {
+                    await App.Current.MainPage.DisplayAlert("Success", message, "OK");
+                    if (Perros.Count == 1)
+                        Perros = new ObservableCollection<Perro>();
+                    return;
+                }
+                await App.Current.MainPage.DisplayAlert("Error", message, "OK");
+            }
+            catch (HttpRequestException ex)
+            {
+                // Manejar errores específicos
+                await App.Current.MainPage.DisplayAlert("Error", $"Error al mandar la peticion: {ex.Message}", "OK");
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores generales
+                await App.Current.MainPage.DisplayAlert("Error", $"Ocurrió un error al intentar eliminar el perro: {ex.Message}", "OK");
+            }
+            finally
+            {
+                _isLoading = false;
+            }
+        }*/
 
         public RazaViewModel()
         {

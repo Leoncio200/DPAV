@@ -44,7 +44,10 @@ public partial class Register : ContentPage
 
             };
 
-            await _usuarioViewModel.RegistrarUsuario();
+            if(await _usuarioViewModel.RegistrarUsuario())
+            {
+                App.Current.MainPage = new NavigationPage(new Login());
+            }
         }
         catch (HttpRequestException ex)
         {

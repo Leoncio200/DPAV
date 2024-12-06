@@ -70,7 +70,7 @@ namespace DPAV.ViewModels
                         return;
                     }
                 }
-                await App.Current.MainPage.DisplayAlert("Error", $"Error al intentar traer los perros.", "OK");
+                await App.Current.MainPage.DisplayAlert("Alert", $"No se encontraron perros", "OK");
             }
             catch (Exception ex)
             {
@@ -78,7 +78,7 @@ namespace DPAV.ViewModels
             }
         }
 
-        public async Task RegistrarPerro()
+        public async Task<bool> RegistrarPerro()
         {
             try
             {
@@ -98,7 +98,7 @@ namespace DPAV.ViewModels
                 if (message == "Perro creado correctamente")
                 {
                     await App.Current.MainPage.DisplayAlert("Success", message, "OK");
-                    return;
+                    return true;
                 }
                 await App.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el perro", "OK");
             }
@@ -116,9 +116,10 @@ namespace DPAV.ViewModels
             {
                 _isLoading = false;
             }
+            return false;
         }
 
-        public async Task ActualizarPerro(int idPerro)
+        public async Task<bool> ActualizarPerro(int idPerro)
         {
             try
             {
@@ -138,7 +139,7 @@ namespace DPAV.ViewModels
                 if (message == "Perro actualizado correctamente")
                 {
                     await App.Current.MainPage.DisplayAlert("Success", message, "OK");
-                    return;
+                    return true;
                 }
                 await App.Current.MainPage.DisplayAlert("Error", "No se pudo actualizar el perro", "OK");
             }
@@ -156,6 +157,7 @@ namespace DPAV.ViewModels
             {
                 _isLoading = false;
             }
+            return false;
         }
 
         public async Task EliminarPerro(int idPerro)
@@ -177,6 +179,8 @@ namespace DPAV.ViewModels
                 if (message == "Perro eliminado correctamente")
                 {
                     await App.Current.MainPage.DisplayAlert("Success", message, "OK");
+                    if (Perros.Count == 1)
+                        Perros = new ObservableCollection<Perro>();
                     return;
                 }
                 await App.Current.MainPage.DisplayAlert("Error", message, "OK");

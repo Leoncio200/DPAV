@@ -24,11 +24,11 @@ public partial class AgregarPerro : ContentPage
 
 	private bool Validar()
 	{
-		if(String.IsNullOrEmpty(NombreEntry.Text) || razasPicker.SelectedIndex < 0 || 
+		if(String.IsNullOrEmpty(NombreEntry.Text) || razasPicker.SelectedItem == null || 
 			String.IsNullOrEmpty(EdadEntry.Text) || String.IsNullOrEmpty(ColorEntry.Text) ||
-            String.IsNullOrEmpty(AlturaEntry.Text) || tamañoPicker.SelectedIndex < 0 ||
-            String.IsNullOrEmpty(PesoEntry.Text) || SexoPicker.SelectedIndex < 0 ||
-            !_DateSelect || String.IsNullOrEmpty(ChipEntry.Text))
+            String.IsNullOrEmpty(AlturaEntry.Text) || tamañoPicker.SelectedItem == null ||
+            String.IsNullOrEmpty(PesoEntry.Text) || SexoPicker.SelectedItem == null ||
+            !_DateSelect)
 		{ 
 			_ = DisplayAlert("Alert", $"Llene todos los campos necesarios.", "OK");
 			return false;
@@ -60,13 +60,15 @@ public partial class AgregarPerro : ContentPage
 			Peso = Convert.ToDouble(PesoEntry.Text),
 			Sexo = SexoPicker.SelectedItem.ToString(),
 			FechaNacimiento = FechaNacimientoPicker.Date,
-			Chip = ChipEntry.Text,
 			Estatus = 1,
 			Esterilizado = EsterilizadoCheckBox.IsChecked ? "Si" : "No"
 		};
 
 		_perroViewModel.NuevoPerro = perro;
 
-		await _perroViewModel.RegistrarPerro();
+		if(await _perroViewModel.RegistrarPerro())
+		{
+			await Navigation.PopAsync();
+		}
     }
 }

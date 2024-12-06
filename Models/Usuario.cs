@@ -41,7 +41,8 @@ namespace DPAV.Models
         public string? CodigoPostal { get; set; }
         [Required]
         public bool Activo { get; set; }
-        [Required]
+        [JsonProperty("role_id")]
+        [Required] 
         public int RoleId { get; set; }
         [Required]
         public int EstadoId { get; set; }

@@ -40,25 +40,6 @@
                    Keyboard="Email"
                    Margin="0,0,0,10"/>
 
-            <!-- Dirección -->
-            <Label Text="Dirección" FontSize="18"/>
-            <Entry x:Name="DireccionEntry"
-                   Placeholder="Ingrese su dirección"
-                   Margin="0,0,0,10"/>
-
-            <!-- Ciudad -->
-            <Label Text="Ciudad" FontSize="18"/>
-            <Entry x:Name="CiudadEntry"
-                   Placeholder="Ingrese su ciudad"
-                   Margin="0,0,0,10"/>
-
-            <!-- Código Postal -->
-            <Label Text="Código Postal" FontSize="18"/>
-            <Entry x:Name="CodigoPostalEntry"
-                   Placeholder="Ingrese su código postal"
-                   Keyboard="Numeric"
-                   Margin="0,0,0,10"/>
-
             <!-- Contraseña -->
             <Label Text="Contraseña" FontSize="18"/>
             <Entry x:Name="PasswordEntry"

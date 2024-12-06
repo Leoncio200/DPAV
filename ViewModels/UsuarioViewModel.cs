@@ -65,6 +65,12 @@ namespace DPAV.ViewModels
 
                 if (user != null)
                 {
+                    if (user.RoleId != 3)
+                    {
+                        await App.Current.MainPage.DisplayAlert("Error", $"No se pudo loguear", "OK");
+                        return false;
+                    }
+
                     await Singleton.Instance.SetSession(userElement, token, user);
 
                     Usuarios.Add(user);
@@ -81,7 +87,7 @@ namespace DPAV.ViewModels
             return false;
         }
 
-        public async Task RegistrarUsuario()
+        public async Task<bool> RegistrarUsuario()
         {
             try
             {
@@ -98,7 +104,7 @@ namespace DPAV.ViewModels
                     Usuarios.Add(user);
                     NuevoUsuario = new Usuario(); // Limpiar el formulario
                     await App.Current.MainPage.DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
-                    return;
+                    return true;
                 }
                 await App.Current.MainPage.DisplayAlert("Error", "No se pudo registrar el usuario", "OK");
             }
@@ -116,6 +122,7 @@ namespace DPAV.ViewModels
             {
                 _isLoading = false;
             }
+            return false;
         }
 
         public async Task<bool> Logout()
